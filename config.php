@@ -6,8 +6,8 @@ define('DB_PASS', getenv('DB_PASS') ?: '8tFsRQMj1inUgKo');
 define('DB_NAME', getenv('DB_NAME') ?: 'if0_42610278_LTO');
 
 // اسم الموقع والروابط
-define('SITE_NAME', 'Let Me Out | فرص الهجرة والمنح');
-define('SITE_SLOGAN', 'بوابتك الموثوقة لفرص الخروج، العمل، الدراسة، والتطوع بالخارج');
+define('SITE_NAME', 'Let Me Out');
+define('SITE_SLOGAN', 'دليلك المباشر لفرص الهجرة والعمل والدراسة بالخارج');
 
 function getDB() {
     static $pdo = null;
@@ -21,31 +21,30 @@ function getDB() {
             ];
             $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         } catch (PDOException $e) {
-            // في حال عدم توفر اتصال بالإنترنت أو عدم تفعيل قاعدة البيانات بعد
             return null;
         }
     }
     return $pdo;
 }
 
-// مصفوفة التصنيفات
+// تصنيفات أنيقة وبدون إيموجي
 $CATEGORIES = [
-    'all' => 'الكل',
-    'immigration' => 'هجرة ومقاطعات 🛂',
-    'scholarship' => 'منح دراسية 🎓',
-    'job' => 'عقود عمل 💼',
-    'volunteering' => 'تطوع وتبادل ثقافي 🤝',
-    'nomad' => 'تأشيرات العمل الحر 💻',
-    'internship' => 'تدريب مهني 🛠️',
-    'other' => 'فرص أخرى ✈️'
+    'all' => 'جميع الفرص',
+    'immigration' => 'الهجرة والإقامة',
+    'scholarship' => 'المنح الدراسية',
+    'job' => 'عقود العمل',
+    'volunteering' => 'برامج التطوع',
+    'nomad' => 'العمل عن بعد',
+    'internship' => 'التدريب المهني',
+    'other' => 'أخرى'
 ];
 
 // أنواع التمويل
 $FUNDING_TYPES = [
-    'fully_funded' => ['label' => 'ممولة بالكامل', 'color' => 'bg-emerald-100 text-emerald-800 border-emerald-200'],
-    'partially_funded' => ['label' => 'ممولة جزئياً', 'color' => 'bg-blue-100 text-blue-800 border-blue-200'],
-    'paid_job' => ['label' => 'وظيفة براتب', 'color' => 'bg-amber-100 text-amber-800 border-amber-200'],
-    'self_funded' => ['label' => 'على الحساب الخاص', 'color' => 'bg-slate-100 text-slate-800 border-slate-200'],
+    'fully_funded' => ['label' => 'تمويل كامل', 'class' => 'bg-emerald-50 text-emerald-700 border border-emerald-200/60'],
+    'partially_funded' => ['label' => 'تمويل جزئي', 'class' => 'bg-blue-50 text-blue-700 border border-blue-200/60'],
+    'paid_job' => ['label' => 'وظيفة براتب', 'class' => 'bg-zinc-100 text-zinc-800 border border-zinc-200'],
+    'self_funded' => ['label' => 'حساب خاص', 'class' => 'bg-zinc-50 text-zinc-600 border border-zinc-200/60'],
 ];
 
 if (session_status() === PHP_SESSION_NONE) {
